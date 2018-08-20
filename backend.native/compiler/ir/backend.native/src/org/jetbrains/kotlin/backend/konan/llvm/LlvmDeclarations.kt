@@ -18,6 +18,7 @@ package org.jetbrains.kotlin.backend.konan.llvm
 
 import kotlinx.cinterop.*
 import llvm.*
+import org.jetbrains.kotlin.backend.common.ir.ir2string
 import org.jetbrains.kotlin.backend.konan.*
 import org.jetbrains.kotlin.backend.konan.descriptors.*
 import org.jetbrains.kotlin.backend.konan.irasdescriptors.*
@@ -55,16 +56,16 @@ internal class LlvmDeclarations(
             error(descriptor.toString())
 
     fun forClass(descriptor: ClassDescriptor) = classes[descriptor] ?:
-            error(descriptor.toString())
+            error(ir2string(descriptor))
 
     fun forField(descriptor: IrField) = fields[descriptor] ?:
-            error(descriptor.toString())
+            error(ir2string(descriptor))
 
     fun forStaticField(descriptor: IrField) = staticFields[descriptor] ?:
-            error(descriptor.toString())
+            error(ir2string(descriptor))
 
     fun forSingleton(descriptor: ClassDescriptor) = forClass(descriptor).singletonDeclarations ?:
-            error(descriptor.toString())
+            error(ir2string(descriptor))
 
     fun forUnique(kind: UniqueKind) = unique[kind] ?: error("No unique $kind")
 
