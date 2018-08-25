@@ -11,7 +11,6 @@ import org.jetbrains.kotlin.backend.common.DumpIrTreeWithDescriptorsVisitor
 import org.jetbrains.kotlin.backend.common.ReflectionTypes
 import org.jetbrains.kotlin.backend.common.validateIrModule
 import org.jetbrains.kotlin.backend.konan.descriptors.*
-import org.jetbrains.kotlin.backend.common.descriptors.DescriptorsFactory
 import org.jetbrains.kotlin.backend.konan.ir.KonanIr
 import org.jetbrains.kotlin.backend.konan.library.KonanLibraryWriter
 import org.jetbrains.kotlin.backend.konan.library.LinkData
@@ -261,7 +260,7 @@ internal class SpecialDeclarationsFactory(val context: Context) {
 }
 
 internal class Context(config: KonanConfig) : KonanBackendContext(config) {
-    override val descriptorsFactory: DescriptorsFactory
+    override val declarationFactory
         get() = TODO("not implemented")
 
     override fun getClass(fqName: FqName): ClassDescriptor {
