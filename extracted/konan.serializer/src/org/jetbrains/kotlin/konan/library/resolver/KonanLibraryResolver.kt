@@ -29,6 +29,8 @@ interface KonanLibraryResolveResult {
     fun getFullList(order: LibraryOrder? = null): List<KonanLibrary>
 
     fun forEach(action: (KonanLibrary, PackageAccessedHandler) -> Unit)
+
+    fun disposeAll()
 }
 
 

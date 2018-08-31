@@ -209,6 +209,10 @@ fun File.zipDirAs(unixFile: File) {
     zipRoot.javaPath.fileSystem.close()
 }
 
+fun File.zipClose() {
+    this.asZipRoot.javaPath.fileSystem.close()
+}
+
 fun Path.recursiveCopyTo(destPath: Path) {
     val sourcePath = this
     Files.walk(sourcePath).forEach next@ { oldPath ->

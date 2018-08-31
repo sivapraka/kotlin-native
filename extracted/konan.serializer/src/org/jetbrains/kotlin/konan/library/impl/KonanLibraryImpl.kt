@@ -36,6 +36,10 @@ internal class KonanLibraryImpl(
         properties
     }
 
+    override fun dispose() {
+        inPlace.dispose()
+    }
+
     override val abiVersion: String
         get() {
             val manifestAbiVersion = manifestProperties.getProperty(KLIB_PROPERTY_ABI_VERSION)

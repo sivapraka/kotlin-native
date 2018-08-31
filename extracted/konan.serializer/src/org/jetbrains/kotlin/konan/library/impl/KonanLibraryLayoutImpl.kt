@@ -1,9 +1,6 @@
 package org.jetbrains.kotlin.konan.library.impl
 
-import org.jetbrains.kotlin.konan.file.File
-import org.jetbrains.kotlin.konan.file.asZipRoot
-import org.jetbrains.kotlin.konan.file.createTempDir
-import org.jetbrains.kotlin.konan.file.createTempFile
+import org.jetbrains.kotlin.konan.file.*
 import org.jetbrains.kotlin.konan.library.KLIB_FILE_EXTENSION
 import org.jetbrains.kotlin.konan.library.KLIB_FILE_EXTENSION_WITH_DOT
 import org.jetbrains.kotlin.konan.library.KonanLibraryLayout
@@ -77,3 +74,9 @@ internal val KonanLibraryLayout.realFiles
         else -> error("Provide an extractor for your container.")
     }
 
+internal fun KonanLibraryLayout.dispose() {
+    when (this) {
+        is ZippedKonanLibraryLayout -> this.klibFile.zipClose()
+        else -> return
+    }
+}

@@ -133,5 +133,11 @@ internal class KonanLibraryResolverResultImpl(
 
     private fun List<KonanResolvedLibrary>.asPlain() = map { it.library }
 
+    override fun disposeAll() {
+        all.forEach {
+            it.library.dispose()
+        }
+    }
+
     override fun toString() = "roots=$roots, all=$all"
 }

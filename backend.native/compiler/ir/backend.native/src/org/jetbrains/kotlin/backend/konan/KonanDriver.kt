@@ -106,5 +106,9 @@ fun runTopLevelPhases(konanConfig: KonanConfig, environment: KotlinCoreEnvironme
     phaser.phase(KonanPhase.LINK_STAGE) {
         LinkStage(context, phaser).linkStage()
     }
+
+    phaser.phase(KonanPhase.CLEANUP) {
+        konanCleanup(context)
+    }
 }
 

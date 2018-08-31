@@ -60,7 +60,8 @@ enum class KonanPhase(val description: String,
     /* ... ... */ BITCODE_LINKER("Bitcode linking"),
     /* */ LINK_STAGE("Link stage"),
     /* ... */ OBJECT_FILES("Bitcode to object file"),
-    /* ... */ LINKER("Linker");
+    /* ... */ LINKER("Linker"),
+    /* */ CLEANUP("Cleanup");
 
     val prerequisite = prerequisite.toSet()
 }
